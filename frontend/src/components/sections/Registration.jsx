@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowRight } from "lucide-react";
 
-const GOOGLE_FORM_URL = "https://forms.google.com";
+const GOOGLE_FORM_URL = "https://forms.gle/fLC7vH53Tw47WfVR6";
 
 export const Registration = () => {
   return (

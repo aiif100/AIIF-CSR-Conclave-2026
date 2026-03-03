@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Globe, MapPin } from "lucide-react";
+import { Mail, Phone, Globe, MapPin, Linkedin, Instagram } from "lucide-react";
 import { Separator } from "../ui/separator";
 
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/htln73kv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
+const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/v3dquimv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
 
 export const Contact = () => {
   return (
@@ -102,6 +102,28 @@ export const Contact = () => {
               <p className="text-white text-sm font-semibold">AJK Innovation Incubator Foundation</p>
               <p className="text-white/50 text-xs">Curating Sustainable Communities</p>
             </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4" data-testid="social-links">
+            <a
+              href="https://in.linkedin.com/company/ajkinnovationincubatorfoundation"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="social-linkedin"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0A66C2] flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+            >
+              <Linkedin className="w-4 h-4" strokeWidth={1.5} />
+            </a>
+            <a
+              href="https://www.instagram.com/aiif.innovation/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="social-instagram"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+            >
+              <Instagram className="w-4 h-4" strokeWidth={1.5} />
+            </a>
           </div>
 
           <p className="text-white/40 text-xs text-center sm:text-right">

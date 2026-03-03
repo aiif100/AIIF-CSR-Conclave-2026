@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/htln73kv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
+const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/v3dquimv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
 
 const navLinks = [
   { label: "Vision", href: "#vision" },

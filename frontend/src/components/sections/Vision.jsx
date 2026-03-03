@@ -69,7 +69,7 @@ export const Vision = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           {[
-            { number: "150+", label: "Attendees Expected" },
+            { number: "250+", label: "Attendees Expected" },
             { number: "20+", label: "Industry Leaders" },
             { number: "1", label: "Shared Mission" },
           ].map((stat) => (

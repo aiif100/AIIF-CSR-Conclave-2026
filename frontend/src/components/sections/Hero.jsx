@@ -3,8 +3,8 @@ import { CountdownTimer } from "../CountdownTimer";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import { Badge } from "../ui/badge";
 
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/htln73kv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
-const POSTER_URL = "https://customer-assets.emergentagent.com/job_28ecf3e1-f28a-43be-b903-d15aa75a831a/artifacts/s8o74pvb_AIIF%27S%20CSR%20CONCLAVE.png";
+const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/v3dquimv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
+const POSTER_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/ilep1hsy_AIIF%27S%20CSR%20CONCLAVE%20%282%29.png";
 
 export const Hero = () => {
   return (
