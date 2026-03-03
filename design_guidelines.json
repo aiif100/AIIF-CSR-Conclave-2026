@@ -1,0 +1,151 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "AIIF CSR Conclave 2026",
+      "tone": "Heritage Luxury meets Corporate Innovation",
+      "persona": "The Modern Durbar",
+      "theme_mode": "light",
+      "visual_language": "Ethnic motifs, Golden ratios, Architectural precision"
+    },
+    "typography": {
+      "font_family": {
+        "heading": "Playfair Display, serif",
+        "body": "Manrope, sans-serif",
+        "accent": "Cormorant Garamond, serif"
+      },
+      "scale": {
+        "h1": "text-5xl md:text-7xl font-bold tracking-tight",
+        "h2": "text-4xl md:text-5xl font-semibold tracking-tight",
+        "h3": "text-2xl md:text-3xl font-medium",
+        "body": "text-base md:text-lg leading-relaxed",
+        "caption": "text-sm tracking-widest uppercase"
+      },
+      "imports": [
+        "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+      ]
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "DEFAULT": "#641220",
+          "foreground": "#FFFFFF",
+          "hover": "#801B2E"
+        },
+        "secondary": {
+          "DEFAULT": "#D4AF37",
+          "foreground": "#2C1A05",
+          "dim": "#B89628"
+        },
+        "background": {
+          "DEFAULT": "#FDFCF5",
+          "paper": "#F5F2E8",
+          "dark": "#1A0505"
+        },
+        "text": {
+          "primary": "#2D0A0F",
+          "secondary": "#5C4033",
+          "muted": "#8A7E72"
+        },
+        "accent": {
+          "cream": "#FDFCF5",
+          "gold": "#D4AF37",
+          "maroon": "#641220",
+          "leaf": "#4A6741"
+        }
+      },
+      "gradients": {
+        "gold_shine": "linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%)",
+        "royal_fade": "linear-gradient(to bottom, #FDFCF5 0%, #F5F2E8 100%)",
+        "maroon_depth": "linear-gradient(45deg, #1A0505 0%, #641220 100%)"
+      }
+    },
+    "components": {
+      "buttons": {
+        "primary": "bg-[#641220] text-white px-8 py-4 rounded-sm font-medium tracking-wide hover:bg-[#801B2E] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 relative overflow-hidden group",
+        "secondary": "border-2 border-[#641220] text-[#641220] px-8 py-4 rounded-sm font-medium tracking-wide hover:bg-[#641220] hover:text-white transition-all duration-300",
+        "gold": "bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-[#2C1A05] px-10 py-4 rounded-full font-bold shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.23)] hover:-translate-y-1 transition-all duration-300"
+      },
+      "cards": {
+        "pricing": "bg-white border border-[#D4AF37]/30 rounded-lg p-8 shadow-sm hover:shadow-2xl transition-all duration-500 relative overflow-hidden group hover:border-[#D4AF37]",
+        "feature": "bg-[#F5F2E8] p-6 rounded-xl border border-transparent hover:border-[#D4AF37]/20 transition-all duration-300"
+      },
+      "containers": {
+        "section": "py-24 px-6 md:px-12 max-w-7xl mx-auto",
+        "hero": "min-h-screen flex flex-col justify-center relative overflow-hidden bg-[#FDFCF5]"
+      }
+    },
+    "visual_enhancers": {
+      "shadows": {
+        "gold_glow": "0 0 20px rgba(212, 175, 55, 0.3)",
+        "maroon_depth": "0 10px 30px -10px rgba(100, 18, 32, 0.3)"
+      },
+      "borders": {
+        "gold_trim": "1px solid #D4AF37"
+      },
+      "patterns": {
+        "kolam": "background-image: radial-gradient(#D4AF37 1px, transparent 1px); background-size: 20px 20px; opacity: 0.1;"
+      }
+    }
+  },
+  "assets": {
+    "images": {
+      "logo": {
+        "url": "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/htln73kv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png",
+        "alt": "AIIF Logo"
+      },
+      "poster": {
+        "url": "https://customer-assets.emergentagent.com/job_28ecf3e1-f28a-43be-b903-d15aa75a831a/artifacts/s8o74pvb_AIIF%27S%20CSR%20CONCLAVE.png",
+        "alt": "CSR Conclave 2026 Event Poster"
+      },
+      "backgrounds": {
+        "lamp_lighting": "https://images.unsplash.com/photo-1572199430578-20ebcdf7ebed?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwxfHx0cmFkaXRpb25hbCUyMGluZGlhbiUyMG9pbCUyMGxhbXAlMjBsaWdodGluZyUyMGV2ZW50fGVufDB8fHx8MTc3MjUyMTczNXww&ixlib=rb-4.1.0&q=85",
+        "nature_hills": "https://images.unsplash.com/photo-1648631328547-15f6f1e990d9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHw0fHxjb2ltYmF0b3JlJTIwd2VzdGVybiUyMGdoYXRzJTIwbmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fHx8MTc3MjUyMTczNnww&ixlib=rb-4.1.0&q=85"
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width: 1.5px; color: #641220;"
+    }
+  },
+  "layout_strategy": {
+    "hero": {
+      "type": "split_asymmetric",
+      "description": "Left 40% (Content), Right 60% (Visual/Poster). Heavy focus on the 'Conclave 2026' typography. Poster should be presented like a framed artifact.",
+      "background": "Cream paper texture with subtle Kolam dot pattern"
+    },
+    "vision": {
+      "type": "centered_editorial",
+      "description": "Tamil quote 'Yathum Oore Yavarum Kelir' in large gold serif font against a dark maroon or blurred nature background. Parallax effect.",
+      "background": "Deep Maroon or Parallax Nature"
+    },
+    "pricing": {
+      "type": "ticket_row",
+      "description": "Three distinct 'Passes' arranged horizontally. Each pass looks like a physical ticket with perforated edges (CSS mask). Hover expands the ticket.",
+      "accent": "Gold border on active/hover"
+    },
+    "faq": {
+      "type": "minimal_accordion",
+      "description": "Clean lines, heavy padding, maroon text. Plus/Minus icons in gold.",
+      "background": "White"
+    }
+  },
+  "universal_guidelines": [
+    "Use 'Playfair Display' for all Headings (H1-H3). Use 'Manrope' for body text.",
+    "Do NOT use pure black (#000000). Use #1A0505 or #2D0A0F.",
+    "Buttons must have a 'jewel-tone' feel. Deep Maroon or Metallic Gold.",
+    "Ensure 'Yathum Oore Yavarum Kelir' is prominent in the Vision section.",
+    "Use the provided UPI deep links logic (e.g., upi://pay?pa=...) for the payment buttons.",
+    "Google Form link must be a primary CTA.",
+    "The poster has banana leaves/kolam - replicate these motifs using CSS or SVGs where possible, or use the poster itself as the main visual anchor.",
+    "Mobile Responsiveness: Stack the Hero section (Poster Top, Text Bottom) for screens < md."
+  ],
+  "instructions_to_main_agent": [
+    "Install 'lucide-react' and 'framer-motion' immediately.",
+    "Create a 'components/ui/TicketCard.jsx' for the pricing section.",
+    "Use 'App.js' for the layout structure. Break sections into 'components/sections/Hero.jsx', 'components/sections/Vision.jsx', etc.",
+    "Ensure the countdown timer targets '2026-03-20T09:00:00'.",
+    "Add 'data-testid' to all buttons and inputs.",
+    "Background pattern: Create a subtle dot grid or radial pattern using CSS to mimic Kolam.",
+    "For UPI Links: Use format `upi://pay?pa=PHONE_NUMBER&pn=AIIF&am=AMOUNT&cu=INR` (Replace with actual details if provided, else use placeholders or just the deep link structure)."
+  ]
+}
