@@ -81,7 +81,7 @@ export const FloatingShare = () => {
                     href={link.getUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    data-testid={`share-${link.name.toLowerCase().replace(/[\s()]/g, "-")}`}
+                    data-testid={`share-${link.name.toLowerCase().replace(/[\s()]/g, "").replace(/\s+/g, "-")}`}
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm text-[#2D0A0F] transition-all duration-200 ${link.color}`}
                   >
                     <Icon />
