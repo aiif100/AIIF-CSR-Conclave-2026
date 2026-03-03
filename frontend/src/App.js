@@ -5,6 +5,7 @@ import { Vision } from "./components/sections/Vision";
 import { Pricing } from "./components/sections/Pricing";
 import { QRPayment } from "./components/sections/QRPayment";
 import { Registration } from "./components/sections/Registration";
+import { Community } from "./components/sections/Community";
 import { FAQ } from "./components/sections/FAQ";
 import { Contact } from "./components/sections/Contact";
 import { FloatingShare } from "./components/FloatingShare";
@@ -24,6 +25,7 @@ function App() {
       <div id="register">
         <Registration />
       </div>
+      <Community />
       <div id="faq">
         <FAQ />
       </div>
