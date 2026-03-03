@@ -1,34 +1,91 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Section transitions */
+.section-enter {
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.section-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Hero background ornaments */
+.hero-ornament {
+  position: absolute;
+  opacity: 0.06;
+  pointer-events: none;
 }
 
-.App-link {
-    color: #61dafb;
+/* Tamil text styling */
+.tamil-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Pricing card hover effects */
+.pricing-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
 }
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -12px rgba(100, 18, 32, 0.2);
+}
+
+/* Gold border animation */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(212, 175, 55, 0.3); }
+  50% { border-color: rgba(212, 175, 55, 0.8); }
+}
+.border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* FAQ accordion styling */
+.faq-item {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+/* Navigation blur */
+.nav-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Countdown digit styling */
+.countdown-digit {
+  font-family: 'Playfair Display', serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pulse animation for CTA */
+@keyframes gentlePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+}
+.pulse-gold {
+  animation: gentlePulse 2.5s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Ornamental corner decorations */
+.corner-ornament {
+  width: 60px;
+  height: 60px;
+  border-style: solid;
+  border-color: var(--gold);
+  opacity: 0.4;
+}
+.corner-tl { border-width: 2px 0 0 2px; }
+.corner-tr { border-width: 2px 2px 0 0; }
+.corner-bl { border-width: 0 0 2px 2px; }
+.corner-br { border-width: 0 2px 2px 0; }
