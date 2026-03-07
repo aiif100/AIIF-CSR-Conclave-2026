@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const Navbar = () => {
+export const Navbar = ({ isWomensDay }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,14 +21,36 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const AnnouncementBar = () => (
+    <div className="bg-gradient-to-r from-[#C05780] via-[#6A0DAD] to-[#C05780] text-white py-2 overflow-hidden relative z-[60] shadow-md">
+      <div className="flex whitespace-nowrap animate-marquee">
+        {[...Array(10)].map((_, i) => (
+          <span key={i} className="mx-8 text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase flex items-center gap-2">
+            <span className="text-[#FFB6C1]">✨</span> Exclusive Women's Day Offer: 25% Discount for Female Registrants <span className="text-[#FFB6C1]">✨</span>
+          </span>
+        ))}
+      </div>
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          display: inline-flex;
+          animation: marquee 40s linear infinite;
+        }
+      `}</style>
+    </div>
+  );
+
+
   return (
     <nav
       data-testid="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "nav-blur bg-[#FDFCF5]/90 shadow-md py-3"
-          : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "nav-blur bg-[#FDFCF5]/90 shadow-md py-3"
+        : "bg-transparent py-5"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
@@ -101,6 +123,9 @@ export const Navbar = () => {
           </div>
         </div>
       )}
+      <div className="h-4"></div>
+      {/* Special Edition Announcement Bar at the bottom of Nav */}
+      {isWomensDay && <AnnouncementBar />}
     </nav>
   );
 };
