@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     // Check if today is Women's Day (March 8)
     const today = new Date();
-    if (today.getMonth() === 2 && today.getDate() === 7) {
+    if (today.getMonth() === 2 && today.getDate() === 8) {
       setIsWomensDay(true);
     }
 
