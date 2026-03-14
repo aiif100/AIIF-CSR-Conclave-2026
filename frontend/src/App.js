@@ -5,7 +5,9 @@ import { Hero } from "./components/sections/Hero";
 import { Vision } from "./components/sections/Vision";
 import { Pricing } from "./components/sections/Pricing";
 import { QRPayment } from "./components/sections/QRPayment";
+import Speckers from "./components/sections/Speckers";
 import { Registration } from "./components/sections/Registration";
+import Partner from "./components/sections/Partner";
 import { Community } from "./components/sections/Community";
 import { FAQ } from "./components/sections/FAQ";
 import { Contact } from "./components/sections/Contact";
@@ -99,8 +101,14 @@ function App() {
         )}
         <QRPayment isWomensDay={false} />
       </div>
+      <div id="speckers">
+        <Speckers />
+      </div>
       <div id="register">
         <Registration />
+      </div>
+      <div id="partner">
+        <Partner />
       </div>
       <Community />
       <div id="faq">

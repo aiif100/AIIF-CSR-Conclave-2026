@@ -2,11 +2,17 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const LOGO_URL = "https://customer-assets.emergentagent.com/job_aiif-csr-conclave/artifacts/v3dquimv_AIIF%20LOGO%20og%20without%20ajk%20mountain-01.png";
+const isMobile = typeof window !== "undefined" && window.innerWidth < 1280;
 
 const navLinks = [
   { label: "Vision", href: "#vision" },
-  { label: "Pricing", href: "#pricing" },
+  {
+    label: "Pricing",
+    href: isMobile ? "#pricing" : "#qr-payment"
+  },
+  { label: "Speckers", href: "#speckers" },
   { label: "Register", href: "#register" },
+  { label: "Partner", href: "#partner" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
@@ -48,7 +54,7 @@ export const Navbar = ({ isWomensDay }) => {
     <nav
       data-testid="navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "nav-blur bg-[#FDFCF5]/90 shadow-md py-3"
+        ? "nav-blur bg-[#FDFCF5]/90 shadow-md pt-4"
         : "bg-transparent py-5"
         }`}
     >
@@ -66,7 +72,7 @@ export const Navbar = ({ isWomensDay }) => {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
