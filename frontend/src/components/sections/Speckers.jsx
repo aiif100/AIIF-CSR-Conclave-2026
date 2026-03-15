@@ -51,10 +51,10 @@ const Speckers = () => {
       {/* Header Container */}
       <div className="absolute top-16 md:top-24 left-0 w-full text-center z-20 px-4">
         <p className="text-sm tracking-[0.3em] uppercase text-[#8A7E72] font-medium mb-3">
-          For Your Information
+          Eminent
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2D0A0F]">
-          Speckers <span className="text-[#641220]">Line up!</span>
+          Speakers <span className="text-[#641220]">Line up!</span>
         </h2>
       </div>
       {/* Carousel Container */}

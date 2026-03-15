@@ -71,7 +71,7 @@ function App() {
             </div>
           ) : (
             <div className="px-10">
-              <PosterImage src="/Poster.jpeg" alt="AIIF CSR Conclave 2026" />
+              <PosterImage src="/Overall Speaker Poster.png" alt="AIIF CSR Conclave 2026" />
             </div>
           )}
         </DialogContent>
