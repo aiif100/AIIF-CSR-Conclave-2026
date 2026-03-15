@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { QrCode, Smartphone, Copy, Check } from "lucide-react";
-import { useState, useEffect } from "react";
-import { Badge } from "../ui/badge";
+import { QrCode, Copy, Check } from "lucide-react";
+import { useState } from "react";
 
 const UPI_ID = "ajk01@fbl";
 const UPI_BASE = `upi://pay?pa=${UPI_ID}&pn=AJK%20INNOVATION%20INCUBATOR%20FOUNDATION&cu=INR&tn=CSR%20Conclave%202026`;
@@ -15,14 +14,8 @@ const tiers = [
 const getQRUrl = (amount) =>
   `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(`${UPI_BASE}&am=${amount}`)}`;
 
-export const QRPayment = ({ isWomensDay }) => {
+export const QRPayment = () => {
   const [copied, setCopied] = useState(false);
-
-  const getDiscountedPrice = (amount) => {
-    if (!isWomensDay) return { current: amount, isDiscounted: false };
-    const discounted = Math.round(amount * 0.75);
-    return { current: discounted, isDiscounted: true };
-  };
 
   const copyUPI = () => {
     navigator.clipboard.writeText(UPI_ID);
@@ -30,18 +23,7 @@ export const QRPayment = ({ isWomensDay }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const theme = isWomensDay ? {
-    sectionBg: "linear-gradient(to bottom, #FFF5F7 0%, #FDFCF5 100%)",
-    accentText: "text-[#C05780]",
-    headingText: "text-[#4A0E2E]",
-    cardBorder: "border-[#C05780]/20",
-    cardBorderGlow: "border-[#C05780] shadow-[0_0_25px_rgba(192,87,128,0.15)]",
-    qrBorder: "border-[#C05780]/30 group-hover:border-[#C05780]",
-    btnBg: "bg-gradient-to-r from-[#C05780] to-[#6A0DAD]",
-    btnText: "text-white",
-    label: "Women's Edition",
-    subheading: "Exclusively for International Women's Day. Scan to pay the discounted delegate fee."
-  } : {
+  const theme = {
     sectionBg: "linear-gradient(to bottom, #F5F2E8 0%, #FDFCF5 100%)",
     accentText: "text-[#8A7E72]",
     headingText: "text-[#2D0A0F]",
@@ -60,7 +42,7 @@ export const QRPayment = ({ isWomensDay }) => {
       style={{ background: theme.sectionBg }}
     >
       {/* Subtle patterns */}
-      <div className={`absolute inset-0 ${isWomensDay ? "opacity-[0.03]" : "kolam-pattern"} pointer-events-none`} />
+      <div className={`absolute inset-0 kolam-pattern pointer-events-none`} />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
@@ -75,7 +57,7 @@ export const QRPayment = ({ isWomensDay }) => {
             {theme.label}
           </p>
           <h2 className={`text-3xl sm:text-4xl font-bold ${theme.headingText}`}>
-            Pay via <span className={isWomensDay ? "text-[#C05780]" : "text-[#641220]"}>QR Code</span>
+            Pay via <span className="text-[#641220]">QR Code</span>
           </h2>
           <p className="text-base text-[#5C4033] mt-4 max-w-2xl mx-auto italic font-medium">
             {theme.subheading}
@@ -85,11 +67,10 @@ export const QRPayment = ({ isWomensDay }) => {
         {/* QR Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-12">
           {tiers.map((tier, index) => {
-            const { current, isDiscounted } = getDiscountedPrice(tier.amount);
             return (
               <motion.div
                 key={tier.label}
-                className={`bg-white rounded-2xl border transition-all duration-500 p-8 text-center hover:shadow-2xl ${isDiscounted ? theme.cardBorderGlow : theme.cardBorder} group`}
+                className={`bg-white rounded-2xl border transition-all duration-500 p-8 text-center hover:shadow-2xl ${theme.cardBorder} group`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -97,22 +78,16 @@ export const QRPayment = ({ isWomensDay }) => {
               >
                 <h3 className={`text-base font-bold ${theme.headingText} mb-1 uppercase tracking-tight`}>{tier.label}</h3>
                 <div className="mb-5">
-                  <p className={`text-3xl font-black ${isDiscounted ? "text-[#C05780]" : "text-[#641220]"}`}>
-                    <span className="text-sm text-[#8A7E72] font-semibold">INR </span>{current.toLocaleString()}
+                  <p className={`text-3xl font-black text-[#641220]`}>
+                    <span className="text-sm text-[#8A7E72] font-semibold">INR </span>{tier.amount.toLocaleString()}
                   </p>
-                  {isDiscounted && (
-                    <div className="flex items-center justify-center gap-2 mt-1">
-                      <span className="text-xs text-[#8A7E72] line-through">₹{tier.amount.toLocaleString()}</span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 bg-[#C05780]/10 text-[#C05780] rounded-full uppercase">Women's Special</span>
-                    </div>
-                  )}
                 </div>
 
                 {/* QR Code */}
                 <div className={`inline-block p-4 bg-white border-2 rounded-2xl transition-all duration-300 ${theme.qrBorder}`}>
                   <img
-                    src={getQRUrl(current)}
-                    alt={`UPI QR Code for ₹${current}`}
+                    src={getQRUrl(tier.amount)}
+                    alt={`UPI QR Code for ₹${tier.amount}`}
                     className="w-[180px] h-[180px] sm:w-[200px] sm:h-[200px]"
                     loading="lazy"
                   />
@@ -127,34 +102,32 @@ export const QRPayment = ({ isWomensDay }) => {
         </div>
 
         {/* UPI ID Info */}
-        {!isWomensDay && (
-          <motion.div
-            className="bg-white/80 backdrop-blur-sm rounded-2xl border border-[#D4AF37]/20 p-6 sm:p-8 max-w-2xl mx-auto shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#F5F2E8] rounded-full flex items-center justify-center">
-                  <QrCode className="w-6 h-6 text-[#641220]" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-[#8A7E72] uppercase tracking-[0.2em] font-bold">UPI ID</p>
-                  <p className="text-lg font-bold text-[#2D0A0F] tracking-tight">{UPI_ID}</p>
-                </div>
+        <motion.div
+          className="bg-white/80 backdrop-blur-sm rounded-2xl border border-[#D4AF37]/20 p-6 sm:p-8 max-w-2xl mx-auto shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-[#F5F2E8] rounded-full flex items-center justify-center">
+                <QrCode className="w-6 h-6 text-[#641220]" />
               </div>
-              <button
-                onClick={copyUPI}
-                className="flex items-center gap-2 bg-[#641220] text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-[#801B2E] transition-all shadow-md active:scale-95"
-              >
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                {copied ? "ID Copied" : "Copy UPI ID"}
-              </button>
+              <div>
+                <p className="text-[10px] text-[#8A7E72] uppercase tracking-[0.2em] font-bold">UPI ID</p>
+                <p className="text-lg font-bold text-[#2D0A0F] tracking-tight">{UPI_ID}</p>
+              </div>
             </div>
-          </motion.div>
-        )}
+            <button
+              onClick={copyUPI}
+              className="flex items-center gap-2 bg-[#641220] text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-[#801B2E] transition-all shadow-md active:scale-95"
+            >
+              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              {copied ? "ID Copied" : "Copy UPI ID"}
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
