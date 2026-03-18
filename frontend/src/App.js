@@ -44,9 +44,18 @@ function App() {
 
       <Dialog open={showPoster} onOpenChange={setShowPoster}>
         <DialogContent className="w-[95vw] sm:w-[85vw] p-2 sm:p-6 border-none bg-transparent shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in fade-in zoom-in duration-500">
-          <div className="px-10">
-            <PosterImage src="/Overall Speaker Poster.png" alt="AIIF CSR Conclave 2026" />
-          </div>
+          <Carousel className="w-full">
+            <CarouselContent>
+              <CarouselItem>
+                <PosterImage src="/Offers.jpeg" alt="International Women's Day 2026" />
+              </CarouselItem>
+              <CarouselItem>
+                <PosterImage src="/Overall Speaker Poster.png" alt="AIIF CSR Conclave 2026" />
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious className="bg-[#D4AF37] hover:bg-[#B89628] text-[#1A0505] border-none -left-12" />
+            <CarouselNext className="bg-[#D4AF37] hover:bg-[#B89628] text-[#1A0505] border-none -right-12" />
+          </Carousel>
         </DialogContent>
       </Dialog>
       <Navbar />

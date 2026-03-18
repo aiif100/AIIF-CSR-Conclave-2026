@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { QrCode, Copy, Check } from "lucide-react";
-import { useState } from "react";
+import { QrCode, Smartphone, Copy, Check } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Badge } from "../ui/badge";
 
 const UPI_ID = "ajk01@fbl";
 const UPI_BASE = `upi://pay?pa=${UPI_ID}&pn=AJK%20INNOVATION%20INCUBATOR%20FOUNDATION&cu=INR&tn=CSR%20Conclave%202026`;
@@ -8,7 +9,7 @@ const UPI_BASE = `upi://pay?pa=${UPI_ID}&pn=AJK%20INNOVATION%20INCUBATOR%20FOUND
 const tiers = [
   { label: "CSR Leaders & Corporates", amount: 2999, price: "2,999" },
   { label: "NGOs & Institutions", amount: 2499, price: "2,499" },
-  { label: "Students & Researchers", amount: 499, price: "499" },
+  { label: "Students, Researchers, Incubator Managers & Heads", amount: 499, price: "499" },
 ];
 
 const getQRUrl = (amount) =>
@@ -23,26 +24,14 @@ export const QRPayment = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const theme = {
-    sectionBg: "linear-gradient(to bottom, #F5F2E8 0%, #FDFCF5 100%)",
-    accentText: "text-[#8A7E72]",
-    headingText: "text-[#2D0A0F]",
-    cardBorder: "border-[#D4AF37]/20",
-    cardBorderGlow: "border-[#D4AF37] shadow-xl",
-    qrBorder: "border-[#D4AF37]/30 group-hover:border-[#D4AF37]",
-    btnBg: "bg-gradient-to-r from-[#D4AF37] to-[#C5A059]",
-    btnText: "text-[#2C1A05]",
-    label: "Standard Edition",
-    subheading: "Scan the QR code below with any UPI app to complete your payment."
-  };
-
   return (
     <section
+      data-testid="qr-payment-section"
       className="py-16 md:py-24 px-6 md:px-12 relative overflow-hidden"
-      style={{ background: theme.sectionBg }}
+      style={{ background: "linear-gradient(to bottom, #F5F2E8 0%, #FDFCF5 100%)" }}
     >
       {/* Subtle patterns */}
-      <div className={`absolute inset-0 kolam-pattern pointer-events-none`} />
+      <div className="absolute inset-0 kolam-pattern pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
@@ -53,14 +42,14 @@ export const QRPayment = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className={`text-sm tracking-[0.3em] uppercase ${theme.accentText} font-bold mb-3`}>
-            {theme.label}
+          <p className="text-sm tracking-[0.3em] uppercase text-[#8A7E72] font-bold mb-3">
+            Standard Edition
           </p>
-          <h2 className={`text-3xl sm:text-4xl font-bold ${theme.headingText}`}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#2D0A0F]">
             Pay via <span className="text-[#641220]">QR Code</span>
           </h2>
           <p className="text-base text-[#5C4033] mt-4 max-w-2xl mx-auto italic font-medium">
-            {theme.subheading}
+            Scan the QR code below with any UPI app to complete your payment.
           </p>
         </motion.div>
 
@@ -70,21 +59,21 @@ export const QRPayment = () => {
             return (
               <motion.div
                 key={tier.label}
-                className={`bg-white rounded-2xl border transition-all duration-500 p-8 text-center hover:shadow-2xl ${theme.cardBorder} group`}
+                className="bg-white rounded-2xl border border-[#D4AF37]/20 transition-all duration-500 p-8 text-center hover:shadow-2xl hover:border-[#D4AF37] group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.12 }}
               >
-                <h3 className={`text-base font-bold ${theme.headingText} mb-1 uppercase tracking-tight`}>{tier.label}</h3>
+                <h3 className="text-base font-bold text-[#2D0A0F] mb-1 uppercase tracking-tight">{tier.label}</h3>
                 <div className="mb-5">
-                  <p className={`text-3xl font-black text-[#641220]`}>
+                  <p className="text-3xl font-black text-[#641220]">
                     <span className="text-sm text-[#8A7E72] font-semibold">INR </span>{tier.amount.toLocaleString()}
                   </p>
                 </div>
 
                 {/* QR Code */}
-                <div className={`inline-block p-4 bg-white border-2 rounded-2xl transition-all duration-300 ${theme.qrBorder}`}>
+                <div className="inline-block p-4 bg-white border-2 border-[#D4AF37]/30 rounded-2xl transition-all duration-300 group-hover:border-[#D4AF37]">
                   <img
                     src={getQRUrl(tier.amount)}
                     alt={`UPI QR Code for ₹${tier.amount}`}
