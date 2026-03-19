@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
 import { Separator } from "../ui/separator";
-import { Check, Crown, Building2, GraduationCap, Smartphone } from "lucide-react";
+import { Check, Copy, Crown, Building2, GraduationCap, Smartphone } from "lucide-react";
+import { useState } from "react";
 import React from "react";
 
-const UPI_BASE = "upi://pay?pa=ajk01@fbl&pn=AJK%20INNOVATION%20INCUBATOR%20FOUNDATION&cu=INR&tn=CSR%20Conclave%202026";
+const UPI_ID = "ajk01@fbl";
+const BANK_DETAILS = {
+  holder: "AJK INNOVATION INCUBATOR FOUNDATION",
+  account: "10920100234043",
+  ifsc: "FDRL0001092",
+  bank: "FEDERAL BANK"
+};
+const UPI_BASE = `upi://pay?pa=${UPI_ID}&pn=AJK%20INNOVATION%20INCUBATOR%20FOUNDATION&cu=INR&tn=CSR%20Conclave%202026`;
 
 const tiers = [
   {
@@ -57,6 +65,14 @@ const tiers = [
 ];
 
 export const Pricing = () => {
+  const [copiedField, setCopiedField] = useState(null);
+
+  const copyToClipboard = (text, field) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
+
   const handleUPIPayment = (amount) => {
     const upiLink = `${UPI_BASE}&am=${amount}`;
     window.location.href = upiLink;
@@ -165,6 +181,92 @@ export const Pricing = () => {
               </motion.div>
             );
           })}
+        </div>
+        {/* Alternative Payment Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-16">
+          {/* UPI ID Info */}
+          <motion.div
+            className="bg-white/80 backdrop-blur-sm rounded-2xl border border-[#D4AF37]/20 p-6 sm:p-8 shadow-lg h-full group/main cursor-pointer hover:border-[#D4AF37]/40 transition-colors"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            onClick={() => copyToClipboard(UPI_ID, 'upi')}
+          >
+            <div className="flex flex-col h-full justify-between gap-6">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-[#F5F2E8] rounded-full flex items-center justify-center shrink-0">
+                    <Smartphone className="w-6 h-6 text-[#641220]" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-[#8A7E72] uppercase tracking-[0.2em] font-bold">UPI Payment</p>
+                    <p className="text-lg font-bold text-[#2D0A0F] tracking-tight">{UPI_ID}</p>
+                  </div>
+                </div>
+                {copiedField === 'upi' ? <Check className="w-5 h-5 text-[#4A6741]" /> : <Copy className="w-5 h-5 text-[#8A7E72] opacity-0 group-hover/main:opacity-100 transition-opacity" />}
+              </div>
+              <p className="text-sm text-[#5C4033] italic">Scan the QR code in the next section or click to copy this ID.</p>
+            </div>
+          </motion.div>
+
+          {/* Bank Transfer Info */}
+          <motion.div
+            className="bg-white/80 backdrop-blur-sm rounded-2xl border border-[#D4AF37]/20 p-6 sm:p-8 shadow-lg h-full"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-12 h-12 bg-[#F5F2E8] rounded-full flex items-center justify-center shrink-0">
+                  <Building2 className="w-6 h-6 text-[#641220]" />
+                </div>
+                <p className="text-sm font-bold text-[#2D0A0F] uppercase tracking-wider">Bank Details (Alternative)</p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-3">
+                <div
+                  className="bg-[#FDFCF5] p-3 rounded-lg border border-[#D4AF37]/10 group/item cursor-pointer hover:border-[#D4AF37]/40 transition-colors"
+                  onClick={() => copyToClipboard(BANK_DETAILS.holder, 'holder')}
+                >
+                  <p className="text-[9px] text-[#8A7E72] uppercase font-bold tracking-tighter">Account Holder</p>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-bold text-[#2D0A0F] leading-tight">{BANK_DETAILS.holder}</p>
+                    {copiedField === 'holder' ? <Check className="w-3 h-3 text-[#4A6741]" /> : <Copy className="w-3 h-3 text-[#8A7E72] opacity-0 group-hover/item:opacity-100 transition-opacity" />}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div
+                    className="bg-[#FDFCF5] p-3 rounded-lg border border-[#D4AF37]/10 group/item cursor-pointer hover:border-[#D4AF37]/40 transition-colors"
+                    onClick={() => copyToClipboard(BANK_DETAILS.account, 'account')}
+                  >
+                    <p className="text-[9px] text-[#8A7E72] uppercase font-bold tracking-tighter">Account Number</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-xs font-bold text-[#2D0A0F]">{BANK_DETAILS.account}</p>
+                      {copiedField === 'account' ? <Check className="w-3 h-3 text-[#4A6741]" /> : <Copy className="w-3 h-3 text-[#8A7E72] opacity-0 group-hover/item:opacity-100 transition-opacity" />}
+                    </div>
+                  </div>
+                  <div
+                    className="bg-[#FDFCF5] p-3 rounded-lg border border-[#D4AF37]/10 group/item cursor-pointer hover:border-[#D4AF37]/40 transition-colors"
+                    onClick={() => copyToClipboard(BANK_DETAILS.ifsc, 'ifsc')}
+                  >
+                    <p className="text-[9px] text-[#8A7E72] uppercase font-bold tracking-tighter">IFSC Code</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-xs font-bold text-[#2D0A0F] font-mono">{BANK_DETAILS.ifsc}</p>
+                      {copiedField === 'ifsc' ? <Check className="w-3 h-3 text-[#4A6741]" /> : <Copy className="w-3 h-3 text-[#8A7E72] opacity-0 group-hover/item:opacity-100 transition-opacity" />}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[#FDFCF5] p-2 rounded-lg border border-[#D4AF37]/10 text-center">
+                  <p className="text-[10px] font-bold text-[#5C4033]">{BANK_DETAILS.bank}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
         {/* Note */}
         <motion.p
